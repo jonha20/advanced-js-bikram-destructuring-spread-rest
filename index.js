@@ -6,16 +6,14 @@ const empleados = [
   { name: "Ana", email: "Ana@gmail.com" },
   { name: "Andrea", email: "Andrea@gmail.com" },
 ];
-let ana = empleados[1];
+const [,ana] = empleados;
 console.log(ana);
 
 //2.- Dado el objeto empleados, extrae el email del empleado Luis --> Luis@gmail.com
-let emailLuis = empleados[0].email;
+const {email:emailLuis} = empleados[0];
 console.log(emailLuis);
 //3.- Usa destructuración para cambiar los valores de a y b;
-let a = 5;
-let b = 3;
-[a, b] = [3, 5];
+const {a = 5, b = 3} = {a : 3 , b : 5}
 console.log(a);
 console.log(b);
 
@@ -29,7 +27,7 @@ const HIGH_TEMPERATURES = {
   today: 35,
   tomorrow: 32,
 };
-let {yesterday: MaximaAyer, today:maximaHoy ,tomorrow:maximaManana} = HIGH_TEMPERATURES;
+let {today:maximaHoy ,tomorrow:maximaManana} = HIGH_TEMPERATURES;
 console.log(maximaHoy);
 console.log(maximaManana);
 
@@ -70,9 +68,9 @@ console.log(countTheArgs(1, "perro", 6, "gato", 2, "ratón", 7, 3, "vaca", "gall
 //8 - Escribe una función llamada combineTwoArrays que reciba dos array cómo argumentos y devuelva solo un array que combine los dos (usando spread operator).
 const combineTwoArrays = (b, c) => [...b, ...c]; 
 
-console.log(combineTwoArrays([1, 2, 3], [4, 5, 6]) )//devuelve [1, 2, 3, 4, 5, 6
-console.log(combineTwoArrays([1, 2], [3, 4, 5, 6]) )//devuelve [1, 2, 3, 4, 5, 6
-console.log(combineTwoArrays([1], [2, 3, 4, 5, 6])) //devuelve [1, 2, 3, 4, 5, 6
+console.log(combineTwoArrays([1, 2, 3], [4, 5, 6]) )//devuelve [1, 2, 3, 4, 5, 6]
+console.log(combineTwoArrays([1, 2], [3, 4, 5, 6]) )//devuelve [1, 2, 3, 4, 5, 6]
+console.log(combineTwoArrays([1], [2, 3, 4, 5, 6])) //devuelve [1, 2, 3, 4, 5, 6]
 
 //9 - Escriba una función llamada onlyUniques que acepte cualquier número de argumentos y devuelva un array de elementos únicos, sin repetidos.
 
@@ -84,7 +82,7 @@ console.log(onlyUniques(1, 1, 2, 2, 3, 6, 7, 8)); //[1, 2, 3, 6, 7, 8]
 
 //10 - Escriba una función llamada combineAllArrays que pueda recibir cualquier cantidad de arrays como argumentos y los combine todos en un solo array..
 
-const combineAllArrays = (...array) => array.reduce((b,c) => [...b, ...c]) ; 
+const combineAllArrays = (...array) => array.reduce((b,c) => [...b, ...c],[]) ; 
 
 console.log(combineAllArrays([3, 6, 7, 8], [2, 7, 3, 1]) );//devuelve [3, 6, 7, 8, 2, 7, 3, 1]
 console.log(combineAllArrays([2, 7, 3, 1], [2, 7, 4, 12],[2, 44, 22, 7, 3, 1]));// devuelve [2, 7, 3, 1, 2, 7, 4, 12, 2, 44, 22, 7, 3, 1]
